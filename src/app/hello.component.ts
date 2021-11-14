@@ -7,6 +7,7 @@ import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 })
 export class HelloComponent implements OnInit, OnDestroy, OnChanges {
   @Input() name: string;
+  setIntervalInstance;
 
   ngOnChanges(changes) {
     console.log(changes);
@@ -14,9 +15,13 @@ export class HelloComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
     console.log('component initialized');
+    this.setIntervalInstance = setInterval(() => {
+      console.log(new Date());
+    }, 1000);
   }
 
   ngOnDestroy() {
     console.log('component destroyed');
+    clearInterval(this.setIntervalInstance);
   }
 }
