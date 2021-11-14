@@ -1,11 +1,21 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  DoCheck,
+  AfterViewInit,
+} from '@angular/core';
 
 @Component({
   selector: 'hello',
   template: `<h1>Hello {{name}}!</h1>`,
   styles: [`h1 { font-family: Lato; }`],
 })
-export class HelloComponent implements OnInit, OnDestroy, OnChanges {
+export class HelloComponent
+  implements OnInit, OnDestroy, OnChanges, DoCheck, AfterViewInit
+{
   @Input() name: string;
   setIntervalInstance;
 
@@ -18,6 +28,14 @@ export class HelloComponent implements OnInit, OnDestroy, OnChanges {
     this.setIntervalInstance = setInterval(() => {
       console.log(new Date());
     }, 1000);
+  }
+
+  ngDoCheck() {
+    console.log('ngDoCheck');
+  }
+
+  ngAfterViewInit() {
+    console.log('ngAfterViewInit');
   }
 
   ngOnDestroy() {
