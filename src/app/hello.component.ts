@@ -10,7 +10,7 @@ export class HelloComponent implements OnInit, OnDestroy, OnChanges {
   setIntervalInstance;
 
   ngOnChanges(changes) {
-    console.log(changes);
+    console.log(changes)
   }
 
   ngOnInit() {
