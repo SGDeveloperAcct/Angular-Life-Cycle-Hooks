@@ -6,6 +6,7 @@ import {
   OnInit,
   DoCheck,
   AfterViewInit,
+  AfterViewChecked,
 } from '@angular/core';
 
 @Component({
@@ -14,7 +15,13 @@ import {
   styles: [`h1 { font-family: Lato; }`],
 })
 export class HelloComponent
-  implements OnInit, OnDestroy, OnChanges, DoCheck, AfterViewInit
+  implements
+    OnInit,
+    OnDestroy,
+    OnChanges,
+    DoCheck,
+    AfterViewInit,
+    AfterViewChecked
 {
   @Input() name: string;
   setIntervalInstance;
@@ -36,6 +43,10 @@ export class HelloComponent
 
   ngAfterViewInit() {
     console.log('ngAfterViewInit');
+  }
+
+  ngAfterViewChecked() {
+    console.log('ngAfterViewChecked');
   }
 
   ngOnDestroy() {
